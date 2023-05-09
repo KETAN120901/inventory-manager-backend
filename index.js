@@ -5,6 +5,7 @@ const bodyParser = require("body-parser")
 const mongoose = require("mongoose");
 const app = express();
 const PORT=process.env.PORT || 5000;
+const path=require("path");
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
@@ -39,7 +40,12 @@ const transactionSchema = {
 const item = mongoose.model("item", itemSchema);
 const customer = mongoose.model("customer", customerSchema);
 const transaction = mongoose.model("transaction", transactionSchema);
+app.use(express.static(path.join(__dirname, 'public')));
 
+// Serve the index.html file for all routes
+app.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname, 'public/index.html'));
+});
 app.get('/', (req, res) => {
 
   async function f1() {

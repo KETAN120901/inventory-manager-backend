@@ -1,0 +1,269 @@
+*{
+    margin: 0px;
+    padding: 0px;
+}
+header > div{
+display: flex;
+justify-content: space-between;
+align-items: center;
+margin: 20px;
+
+}
+nav > ul{
+    display: flex;
+    justify-content: space-between;
+align-items: center;
+list-style: none;
+}
+nav > ul > li {
+    margin: 10px;
+}
+
+
+footer{
+    padding: 50px;
+    text-align: center;
+    background-color: grey;
+}
+a{
+    text-decoration: none;
+}  
+nav{
+    display: flex;
+    justify-content: space-between;
+align-items: center;
+margin: 20px;
+padding: 5px;
+border: 1px solid grey;
+border-radius: 5px;
+}
+.item-form{
+    display: flex;
+    flex-direction: column;
+    background-color: #FF1D58;
+    
+    border: 1px solid grey;
+    border-radius: 5px;
+    align-items: center;
+    justify-content: space-between;
+}
+button{
+    
+    width: 45px;
+    height: 45px;
+    margin: 10px;
+    
+}
+button:hover{
+    cursor: pointer;
+}
+form > input{
+    margin: 10px;
+    padding: 10px;
+}
+.item-box{
+    margin-top: 20px;
+    border: 1px solid grey;
+    border-radius: 5px;
+    /* display: inline-block; */
+    
+    background-color:  #ABF62D;
+}
+.item-box div{
+    padding: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.customers{
+    border: 1px solid grey;
+    border-radius: 5px;
+    margin: 20px;
+    padding: 15px;
+    
+}
+.customers  div {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.customers > div >div > p{
+    margin-left: 50px;
+    text-align: center;
+}
+table{
+    width: 100%;
+}
+.show1{
+    display: none;
+}
+.show2{
+    display: none;
+}
+.navbar-collapse ul{
+    flex-direction: column;
+}
+.button-div{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.button-div > button{
+    margin: 20px;
+}
+.sidebar >div{
+    height: 250px;
+    border: 1px solid grey;
+    border-radius: 5px;
+    margin-top: 20px;
+    margin-right: 20px;
+    padding: 15px;
+    margin-bottom: 20px;
+}
+.container{
+    display: flex;
+  
+
+    justify-content: space-between;
+}
+.container> div{
+    margin-top: 0px;
+   
+}
+.sidebar{
+    width: 30%;
+    
+}
+.sidebar div{
+    margin-top: 0px;
+}
+.home-section{
+    width: 70%;
+    border: 1px solid grey;
+    border-radius: 5px;
+    margin: 20px;
+    margin-top: 0px;
+    padding: 15px;
+}
+.customers{
+    width: 70%;
+    border: 1px solid grey;
+    border-radius: 5px;
+}
+.top{
+    width: 70%;
+    margin: 20px;
+    padding: 15px;
+    border: 1px solid grey;
+    border-radius: 5px;
+}
+.transactions{
+    width: 70%;
+    margin: 20px;
+    padding: 15px;
+    border: 1px solid grey;
+    border-radius: 5px;
+}
+.import{
+    width: 70%;
+    margin: 20px;
+    padding: 15px;
+    border: 1px solid grey;
+    border-radius: 5px;
+}
+.export{
+    width: 70%;
+    margin: 20px;
+    padding: 15px;
+    border: 1px solid grey;
+    border-radius: 5px;
+}
+.catalog{
+    width: 70%;
+    margin: 20px;
+    padding: 15px;
+    border: 1px solid grey;
+    border-radius: 5px;
+    
+}
+.collapsible-sidebar>div{
+    
+    height: 250px;
+    border: 1px solid grey;
+    border-radius: 5px;
+    margin: 20px;
+    padding: 15px;
+}
+.collapsible-sidebar{
+    width: 100%;
+}
+.itemprofile{
+    width: 70%;
+    margin: 20px;
+    padding: 15px;
+    border: 1px solid grey;
+    border-radius: 5px;
+
+  }
+  .customerprofile{
+    width: 70%;
+    margin: 20px;
+    padding: 15px;
+    border: 1px solid grey;
+    border-radius: 5px;
+
+  }
+@media screen and (min-width: 750px) {
+    
+    .navbar{
+        display: none;
+    }
+    
+
+    
+    
+    
+  }
+  @media screen and (max-width: 750px) {
+    
+    .noncollapse-navbar{
+        display: none;
+    }
+    .sidebar{
+        display: none;
+    }
+    .home-section{
+        width:100%
+    }
+    .top{
+        width:100%
+    }
+    .catalog{
+        width:100%
+    }
+    .transactions{
+        width:100%
+    }
+    .import{
+        width:100%
+    }
+    .export{
+        width:100%
+    }
+    .customers{
+        width:100%
+    }
+.itemprofile{
+    width: 100%;
+}
+.customerprofile{
+    width: 100%;
+}
+
+    
+    
+  }
+  ul{
+    display: flex;
+  }
