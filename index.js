@@ -1,16 +1,19 @@
 require('dotenv').config();
 const express = require("express");
+const cors = require('cors');
 const bodyParser = require("body-parser")
 const mongoose = require("mongoose");
 const app = express();
 const PORT=process.env.PORT || 5000;
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
+
 app.use(function (req, res, next) {
   res.header("Access-Control-Allow-Origin", "https://inventory-management-aa64.onrender.com/"); // replace with your frontend's URL
   res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
   next();
 });
+app.use(cors({origin:['http://localhost:3000','https://inventory-management-aa64.onrender.com/']}))
 mongoose.set('strictQuery', false);
 mongoose.connect(process.env.MONGO_URI);
 // mongoose.connect("mongodb://localhost:27017/shopDB");
