@@ -40,12 +40,9 @@ const transactionSchema = {
 const item = mongoose.model("item", itemSchema);
 const customer = mongoose.model("customer", customerSchema);
 const transaction = mongoose.model("transaction", transactionSchema);
-app.use(express.static(path.join(__dirname, 'public')));
 
 // Serve the index.html file for all routes
-app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname, 'public/index.html'));
-});
+
 app.get('/', (req, res) => {
 
   async function f1() {
