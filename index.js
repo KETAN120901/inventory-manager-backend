@@ -21,12 +21,19 @@ mongoose.connect(process.env.MONGO_URI);
 const itemSchema = {
   name: String,
   price: String,
-  quantity: String
+  quantity: String,
+  
+    tbuy:String,
+    tsell:String,
+    tpro:String
 };
 const customerSchema = {
   customerName: String,
   fatherName: String,
-  village: String
+  village: String,
+  tbuy:String,
+  tsell:String,
+  tpro:String
 };
 const transactionSchema = {
   customerName: String,
@@ -41,8 +48,6 @@ const item = mongoose.model("item", itemSchema);
 const customer = mongoose.model("customer", customerSchema);
 const transaction = mongoose.model("transaction", transactionSchema);
 
-// Serve the index.html file for all routes
-
 app.get('/', (req, res) => {
 
   async function f1() {
@@ -52,13 +57,12 @@ app.get('/', (req, res) => {
 
   }
   f1();
-
+  
   // Send the users array back to the frontend as JSON
-
+  
 });
 app.get('/customers', (req, res) => {
-
-  async function f1() {
+    async function f1() {
     const customers = await customer.find();
 
     res.json(customers);
@@ -83,11 +87,12 @@ app.get('/sell', (req, res) => {
   // Send the users array back to the frontend as JSON
 
 });
-app.put('/:id', (req, res) => {
-  const itemId = req.params.id;
-  const quantity=req.body.quantity;
+
+app.put('/', (req, res) => {
+  const {name,price,quantity,tbuy,tsell,tpro}=req.body;
   
-  item.updateOne({_id:itemId}, {$set:{quantity:quantity}})
+
+  item.updateOne({name:name},{$set:{name:name,price:price,quantity:quantity,tbuy:tbuy,tsell:tsell,tpro:tpro}})
   .then(result => {
     console.log(result.modifiedCount); // Handle the result of the update operation
   })
@@ -99,18 +104,52 @@ app.put('/:id', (req, res) => {
 
   res.status(200).json({ message: 'Customer updated successfully' });
 });
+app.put('/updatecustomer', (req, res) => {
+  const {customerName,fatherName,village,tbuy,tsell,tpro}=req.body;
+  
+
+  customer.updateOne({customerName:customerName},{$set:{customerName:customerName,fatherName:fatherName,village:village,tbuy:tbuy,tsell:tsell,tpro:tpro}})
+  .then(result => {
+    console.log(result.modifiedCount); // Handle the result of the update operation
+  })
+  .catch(error => {
+    console.error(error); // Handle errors
+  });
+
+  // Update the customer in the database here using the customerId and customerName variables
+
+  res.status(200).json({ message: 'Customer updated successfully' });
+});
+// app.put('/', (req, res) => {
+//   const {name,price,quantity}=req.body;
+  
+  
+  
+//   item.updateOne({name:name},{$set:{name:name,price:price,quantity:quantity}}, (err, doc) => {
+//     if (err) {
+//       console.error(err);
+//       res.status(500).send('Error updating document');
+//     } else {
+//       res.send('Document updated successfully');
+//     }
+//   });
+//   res.status(200).json({ message: 'Customer updated successfully' });
+// });
 app.post("/", function (req, res) {
-  const { name, price, quantity } = req.body;
-  const newItem = new item({ name, price, quantity });
+  const { name, price, quantity ,tbuy,tsell,tpro} = req.body;
+  const newItem = new item({ name, price, quantity,tbuy,tsell,tpro });
   newItem.save();
+  
   res.json({
     message: 'Data received!'
   });
 
 })
 app.post("/customers", function (req, res) {
-  const { customerName, fatherName, village } = req.body;
-  const newCustomer = new customer({ customerName, fatherName, village });
+  const { customerName, fatherName, village,tbuy,tsell,tpro } = req.body;
+  console.log("called")
+  const newCustomer = new customer({ customerName, fatherName, village ,tbuy,tsell,tpro});
+  console.log(newCustomer)
   newCustomer.save();
   res.json({
     message: 'Data received!'
@@ -121,11 +160,13 @@ app.post("/sell", function (req, res) {
   const { customerName, itemName, BuyingPrice,SellingPrice,quantity,datetime,profit} = req.body;
   const newTransaction = new transaction({ customerName, itemName, BuyingPrice,SellingPrice,quantity,datetime,profit});
   newTransaction.save();
+  
   res.json({
     message: 'Data received!'
   });
 
 })
+
 app.listen(PORT, () => {
   console.log(`server is running at port ${PORT}`);
 })
